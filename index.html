@@ -87,27 +87,33 @@
     <h1>고객 정보 접수</h1>
 
     <form action="https://formspree.io/f/mbdrqgae" method="POST">
-      
+
+      <!-- 메일 제목 -->
+      <input type="hidden" name="_subject" value="[보험 무료점검] 신규 신청 접수">
+
+      <!-- 회신용 -->
+      <input type="hidden" name="_replyto" value="">
+
       <label>이름</label>
-      <input type="text" name="name" required />
+      <input type="text" name="name" required>
 
       <label>연락처</label>
-      <input type="tel" name="phone" placeholder="010-0000-0000" required />
+      <input type="tel" name="phone" placeholder="010-0000-0000" required>
 
       <label>주소</label>
-      <input type="text" name="address" required />
+      <input type="text" name="address" required>
 
       <label>생년월일</label>
-      <input type="date" name="birth" required />
+      <input type="date" name="birth" required>
 
       <div class="agreement">
         <label>
-          <input type="checkbox" required />
+          <input type="checkbox" name="agree" value="동의함" required>
           개인정보 수집 및 이용에 동의합니다
         </label>
         <p>
-          수집 항목: 이름, 연락처, 주소, 생년월일<br/>
-          수집 목적: 고객 상담 및 서비스 제공<br/>
+          수집 항목: 이름, 연락처, 주소, 생년월일<br>
+          수집 목적: 고객 상담 및 서비스 제공<br>
           보유 기간: 목적 달성 후 즉시 파기
         </p>
       </div>
