@@ -35,8 +35,7 @@
       display: block;
     }
 
-    input[type="text"],
-    input[type="date"] {
+    input {
       width: 100%;
       padding: 12px;
       margin-top: 6px;
@@ -52,6 +51,7 @@
     }
 
     .agreement input {
+      width: auto;
       margin-right: 6px;
     }
 
@@ -97,6 +97,14 @@
       <label>이름</label>
       <input type="text" name="name" placeholder="이름을 입력하세요" required />
 
+      <label>연락처</label>
+      <input
+        type="tel"
+        name="phone"
+        placeholder="예: 010-1234-5678"
+        required
+      />
+
       <label>주소</label>
       <input type="text" name="address" placeholder="주소를 입력하세요" required />
 
@@ -110,7 +118,7 @@
         </label>
 
         <div class="agreement-box">
-          수집 항목: 이름, 주소, 생년월일, 연락처<br />
+          수집 항목: 이름, 연락처, 주소, 생년월일<br />
           수집 목적: 고객 상담 및 서비스 제공<br />
           보유 기간: 목적 달성 후 즉시 파기<br />
           동의 거부 시 서비스 이용이 제한될 수 있습니다.
@@ -121,7 +129,7 @@
     </form>
 
     <footer>
-      © 2025 All rights reserved
+      © 2025 고객정보 접수 페이지
     </footer>
   </div>
 </body>
