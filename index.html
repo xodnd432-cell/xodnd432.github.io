@@ -12,7 +12,6 @@
       margin: 0;
       padding: 20px;
     }
-
     .container {
       max-width: 420px;
       margin: 0 auto;
@@ -21,20 +20,17 @@
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
-
     h1 {
       font-size: 20px;
       text-align: center;
       margin-bottom: 20px;
     }
-
     label {
       display: block;
       font-weight: 600;
       margin-top: 14px;
       margin-bottom: 6px;
     }
-
     input {
       width: 100%;
       padding: 12px;
@@ -42,7 +38,6 @@
       border: 1px solid #ccc;
       border-radius: 8px;
     }
-
     .agreement {
       background: #f9f9f9;
       padding: 12px;
@@ -50,12 +45,10 @@
       margin-top: 16px;
       font-size: 13px;
     }
-
     .agreement input {
       width: auto;
       margin-right: 6px;
     }
-
     button {
       width: 100%;
       margin-top: 20px;
@@ -68,17 +61,6 @@
       color: white;
       cursor: pointer;
     }
-
-    button:hover {
-      background: #1e4fd8;
-    }
-
-    .footer {
-      margin-top: 16px;
-      font-size: 12px;
-      color: #666;
-      text-align: center;
-    }
   </style>
 </head>
 
@@ -88,17 +70,16 @@
 
     <form action="https://formspree.io/f/mbdrqgae" method="POST">
 
-      <!-- 메일 제목 -->
-      <input type="hidden" name="_subject" value="[보험 무료점검] 신규 신청 접수">
-
-      <!-- 회신용 -->
-      <input type="hidden" name="_replyto" value="">
+      <input type="hidden" name="_subject" value="[보험 무료점검] 신규 신청">
 
       <label>이름</label>
       <input type="text" name="name" required>
 
       <label>연락처</label>
-      <input type="tel" name="phone" placeholder="010-0000-0000" required>
+      <input type="tel" name="phone" required>
+
+      <label>이메일</label>
+      <input type="email" name="email" required>
 
       <label>주소</label>
       <input type="text" name="address" required>
@@ -111,19 +92,11 @@
           <input type="checkbox" name="agree" value="동의함" required>
           개인정보 수집 및 이용에 동의합니다
         </label>
-        <p>
-          수집 항목: 이름, 연락처, 주소, 생년월일<br>
-          수집 목적: 고객 상담 및 서비스 제공<br>
-          보유 기간: 목적 달성 후 즉시 파기
-        </p>
       </div>
 
       <button type="submit">제출하기</button>
     </form>
-
-    <div class="footer">
-      본 페이지는 고객 상담을 위한 정보 수집용입니다.
-    </div>
   </div>
 </body>
 </html>
+
