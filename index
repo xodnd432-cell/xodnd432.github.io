@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>고객 정보 수집</title>
+</head>
+<body>
+  <h1>상담 신청</h1>
+
+  <form>
+    <label>이름</label><br>
+    <input type="text"><br><br>
+
+    <label>전화번호</label><br>
+    <input type="text"><br><br>
+
+    <button type="submit">신청하기</button>
+  </form>
+</body>
+</html>
