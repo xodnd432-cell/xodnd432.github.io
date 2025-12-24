@@ -109,7 +109,7 @@
           1. 수집 항목: 성명, 연락처, 주소(동/읍/면 단위), 생년월일<br>
           2. 수집 목적: 보험 상담 및 고객 응대<br>
           3. 보유 및 이용 기간: 목적 달성 후 즉시 파기<br>
-          4. 거부 권리 안내: 동의 거부 시 상담이 제한될 수 있습니다.
+          4. 동의 거부 시 상담이 제한될 수 있습니다.
         </p>
       </div>
 
@@ -132,16 +132,18 @@
 
       const formData = new FormData(form);
 
-      fetch("https://script.google.com/macros/s/AKfycbwexQ8wYxVg5Gt1cyNCnntGAvcvlR-hp33_PmJddXGu577RQ5LrIwqrEfsD4Lv-LFaD/exec", {
+      fetch("https://script.google.com/macros/s/AKfycbx_Kn2uayucGlelpi4fLCrXk1xluV2SgPDxYXQa5cve7m1eLcCQQ7ZGymbREP1jtE4/exec", {
         method: "POST",
         body: formData
       })
       .then(response => response.text())
-      .then(() => {
+      .then(result => {
+        // 정상 결과 처리
         formBox.style.display = "none";
         complete.style.display = "block";
       })
-      .catch(() => {
+      .catch(error => {
+        console.error(error);
         alert("전송 중 오류가 발생했습니다. 다시 시도해주세요.");
       });
     });
