@@ -113,29 +113,37 @@
       담당자가 빠르게 연락드리겠습니다.
     </div>
   </div>
-<script>
-  const form = document.getElementById("customerForm");
-  const complete = document.getElementById("completeMessage");
 
-  form.addEventListener("submit", function(e) {
-    e.preventDefault();
+  <script>
+    const form = document.getElementById("customerForm");
+    const complete = document.getElementById("completeMessage");
 
-    const formData = new URLSearchParams(new FormData(form));
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
 
-    fetch("https://script.google.com/macros/s/AKfycbwfOoYUrqj0AygpTFB7H99X5YgxEz5wl8uTrM7-d69bCeMI1dOWkxmJiifXjvpbh56I/exec", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      body: formData.toString()
-    })
-    .then(res => res.text())
-    .then(() => {
-      form.style.display = "none";
-      complete.style.display = "block";
-    })
-    .catch(() => {
-      alert("전송 중 오류가 발생했습니다. 다시 시도해주세요.");
+      const data = {
+        name: form.name.value,
+        phone: form.phone.value,
+        address: form.address.value,
+        birth: form.birth.value
+      };
+
+      fetch("https://script.google.com/macros/s/AKfycbyOa3INAri-faJvGERqRznKcMFmpTH0UyCxGclwlk354x0iDko-EcfWLM0cGTg4ge0v/exec", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      })
+      .then(res => res.json())
+      .then(() => {
+        form.style.display = "none";
+        complete.style.display = "block";
+      })
+      .catch(() => {
+        alert("전송 중 오류가 발생했습니다. 다시 시도해주세요.");
+      });
     });
-  });
-</script>
+  </script>
+</body>
+</html>
