@@ -2,17 +2,16 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>고객 정보 접수</title>
 
   <style>
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: #f5f6f8;
-      margin: 0;
       padding: 20px;
+      margin: 0;
     }
-
     .container {
       max-width: 420px;
       margin: 0 auto;
@@ -21,122 +20,121 @@
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
-
     h1 {
-      font-size: 20px;
       text-align: center;
+      font-size: 20px;
       margin-bottom: 20px;
     }
-
     label {
-      display: block;
       font-weight: 600;
       margin-top: 14px;
-      margin-bottom: 6px;
+      display: block;
     }
-
     input {
       width: 100%;
       padding: 12px;
-      font-size: 14px;
-      border: 1px solid #ccc;
+      margin-top: 6px;
       border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 14px;
     }
-
     .notice {
       font-size: 12px;
       color: #666;
       margin-top: 4px;
     }
-
     .agreement {
       background: #f9f9f9;
-      padding: 14px;
+      padding: 12px;
       border-radius: 8px;
-      margin-top: 18px;
+      margin-top: 16px;
       font-size: 13px;
     }
-
-    .agreement input {
-      width: auto;
-      margin-right: 6px;
-    }
-
     button {
       width: 100%;
-      margin-top: 22px;
+      margin-top: 20px;
       padding: 14px;
       font-size: 16px;
-      font-weight: bold;
       border: none;
       border-radius: 10px;
       background: #2563eb;
-      color: white;
+      color: #fff;
+      font-weight: bold;
       cursor: pointer;
     }
-
-    button:hover {
-      background: #1e4fd8;
+    button:disabled {
+      background: #aaa;
     }
-
-    .success {
+    .complete {
+      display: none;
       text-align: center;
       font-size: 18px;
-      padding: 40px 20px;
-      display: none;
-    }
-
-    .success p {
-      margin-top: 10px;
-      font-size: 14px;
-      color: #555;
+      padding: 40px 0;
     }
   </style>
 </head>
 
 <body>
+  <div class="container">
+    <h1>고객 정보 접수</h1>
 
-<div class="container" id="formBox">
-  <h1>고객 정보 접수</h1>
+    <form id="customerForm">
+      <label>이름</label>
+      <input type="text" name="name" required>
 
-  <form id="contactForm">
-    <label>이름</label>
-    <input type="text" name="name" required />
+      <label>연락처</label>
+      <input type="tel" name="phone" placeholder="010-0000-0000" required>
 
-    <label>연락처</label>
-    <input type="tel" name="phone" placeholder="010-0000-0000" required />
+      <label>주소</label>
+      <input type="text" name="address" required>
+      <div class="notice">※ 동/읍/면까지만 입력해 주세요 (상세주소 불필요)</div>
 
-    <label>주소</label>
-    <input type="text" name="address" placeholder="예) 서울시 강남구 ○○동" required />
-    <div class="notice">※ 상세주소 제외, 동(읍/면)까지만 입력해주세요</div>
+      <label>생년월일</label>
+      <input type="date" name="birth" required>
 
-    <label>생년월일</label>
-    <input type="date" name="birth" required />
+      <div class="agreement">
+        <label>
+          <input type="checkbox" required>
+          개인정보 수집 및 이용에 동의합니다
+        </label>
+        <p>
+          수집 항목: 성명, 연락처, 주소(동 단위), 생년월일<br>
+          수집 목적: 보험 상담 및 고객 응대<br>
+          보유 및 이용 기간: 상담 목적 달성 후 즉시 파기<br>
+          동의를 거부할 권리가 있으나, 거부 시 상담이 제한될 수 있습니다.
+        </p>
+      </div>
 
-    <div class="agreement">
-      <label>
-        <input type="checkbox" required />
-        개인정보 수집 및 이용에 동의합니다
-      </label>
-      <p>
-        본인은 아래와 같은 개인정보 수집 및 이용에 동의합니다.<br><br>
-        <strong>수집 항목</strong>: 이름, 연락처, 주소(동 단위), 생년월일<br>
-        <strong>수집 목적</strong>: 고객 상담, 서비스 안내 및 관련 업무 처리<br>
-        <strong>보유 및 이용 기간</strong>: 수집 목적 달성 후 즉시 파기<br><br>
-        ※ 귀하는 개인정보 제공에 대한 동의를 거부할 권리가 있으나, 동의하지 않을 경우 서비스 이용이 제한될 수 있습니다.
-      </p>
+      <button type="submit">제출하기</button>
+    </form>
+
+    <div class="complete" id="completeMessage">
+      ✅ 접수가 완료되었습니다.<br><br>
+      담당자가 빠르게 연락드리겠습니다.
     </div>
+  </div>
 
-    <button type="submit">제출하기</button>
-  </form>
-</div>
+  <script>
+    const form = document.getElementById("customerForm");
+    const complete = document.getElementById("completeMessage");
 
-<div class="container success" id="successBox">
-  <h2>접수 완료되었습니다 ✅</h2>
-  <p>담당자가 확인 후 빠르게 연락드리겠습니다.</p>
-</div>
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
 
-<script>
-  const scriptURL = "https://script.google.com/macros/s/AKfycbzz9xPm6JhWX3BmDvLyseops1R7x5lrFyM6fiDebj2rum0qI3FKjzJOErXgoDw19aWQ/exec";
-  const form = document.getElementById("contactForm");
-  const formBox = document
+      const formData = new FormData(form);
+
+      fetch("https://script.google.com/macros/s/AKfycbxa8jhS-bSzoDuLOwcX31jrhNf_x8Tw8DQ3I0xuqQqaeKKYFyl0cKg42aOW_4rNXsb-/exec", {
+        method: "POST",
+        body: formData
+      })
+      .then(() => {
+        form.style.display = "none";
+        complete.style.display = "block";
+      })
+      .catch(() => {
+        alert("전송 중 오류가 발생했습니다. 다시 시도해주세요.");
+      });
+    });
+  </script>
+</body>
+</html>
