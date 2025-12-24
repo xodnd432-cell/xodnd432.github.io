@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>보험 무료점검 신청</title>
+  <title>고객 정보 접수</title>
 
   <style>
     body {
@@ -43,11 +43,17 @@
       border-radius: 8px;
     }
 
+    .notice {
+      font-size: 12px;
+      color: #666;
+      margin-top: 4px;
+    }
+
     .agreement {
       background: #f9f9f9;
-      padding: 12px;
+      padding: 14px;
       border-radius: 8px;
-      margin-top: 16px;
+      margin-top: 18px;
       font-size: 13px;
     }
 
@@ -58,7 +64,7 @@
 
     button {
       width: 100%;
-      margin-top: 20px;
+      margin-top: 22px;
       padding: 14px;
       font-size: 16px;
       font-weight: bold;
@@ -73,107 +79,64 @@
       background: #1e4fd8;
     }
 
-    .footer {
-      margin-top: 16px;
-      font-size: 12px;
-      color: #666;
+    .success {
       text-align: center;
-    }
-
-    /* 완료 화면 */
-    .complete {
-      display: none;
-      text-align: center;
+      font-size: 18px;
       padding: 40px 20px;
+      display: none;
     }
 
-    .complete h2 {
-      font-size: 22px;
-      margin-bottom: 12px;
-    }
-
-    .complete p {
+    .success p {
+      margin-top: 10px;
       font-size: 14px;
       color: #555;
-      line-height: 1.6;
-    }
-
-    /* 해시(#complete)일 때 폼 숨기고 완료 화면 표시 */
-    :target ~ .container {
-      display: none;
-    }
-
-    #complete:target {
-      display: block;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- 완료 화면 -->
-  <div id="complete" class="container complete">
-    <h2>접수가 완료되었습니다</h2>
-    <p>
-      고객님의 신청이 정상적으로 접수되었습니다.<br>
-      담당자가 확인 후 빠르게 연락드리겠습니다.<br><br>
-      감사합니다.
-    </p>
-  </div>
+<div class="container" id="formBox">
+  <h1>고객 정보 접수</h1>
 
-  <!-- 신청 폼 -->
-  <div class="container">
-    <h1>보험 무료점검 신청</h1>
+  <form id="contactForm">
+    <label>이름</label>
+    <input type="text" name="name" required />
 
-    <form action="https://formspree.io/f/mbdrqgae" method="POST">
+    <label>연락처</label>
+    <input type="tel" name="phone" placeholder="010-0000-0000" required />
 
-      <!-- 메일 제목 -->
-      <input type="hidden" name="_subject" value="[보험 무료점검] 신규 신청 접수">
+    <label>주소</label>
+    <input type="text" name="address" placeholder="예) 서울시 강남구 ○○동" required />
+    <div class="notice">※ 상세주소 제외, 동(읍/면)까지만 입력해주세요</div>
 
-      <!-- 제출 후 이동 -->
-      <input type="hidden" name="_redirect" value="https://xodnd432-cell.github.io/#complete">
+    <label>생년월일</label>
+    <input type="date" name="birth" required />
 
-      <label>이름</label>
-      <input type="text" name="name" required>
-
-      <label>연락처</label>
-      <input type="tel" name="phone" placeholder="010-0000-0000" required>
-
-      <label>이메일</label>
-      <input type="email" name="email" placeholder="example@naver.com" required>
-
-      <label>거주 지역</label>
-      <input 
-        type="text" 
-        name="address" 
-        placeholder="예) 서울시 강남구 역삼동 (상세주소 불필요)" 
-        required
-      >
-
-      <label>생년월일</label>
-      <input type="date" name="birth" required>
-
-      <div class="agreement">
-        <label>
-          <input type="checkbox" name="agree" value="동의함" required>
-          개인정보 수집 및 이용에 동의합니다 (필수)
-        </label>
-        <p>
-          ■ 수집 항목: 이름, 연락처, 이메일, 주소(동/읍/면 단위), 생년월일<br>
-          ■ 수집 목적: 보험 상담 및 보험 무료점검 서비스 제공<br>
-          ■ 보유 및 이용 기간: 상담 및 서비스 제공 완료 후 1년 또는 관련 법령에 따른 보존기간까지<br>
-          ■ 동의 거부 권리 안내: 귀하는 개인정보 수집·이용에 대한 동의를 거부할 수 있으며,
-          동의하지 않을 경우 상담 서비스 제공이 제한될 수 있습니다.
-        </p>
-      </div>
-
-      <button type="submit">제출하기</button>
-    </form>
-
-    <div class="footer">
-      입력하신 정보는 상담 목적 외 사용되지 않으며 제3자에게 제공되지 않습니다.
+    <div class="agreement">
+      <label>
+        <input type="checkbox" required />
+        개인정보 수집 및 이용에 동의합니다
+      </label>
+      <p>
+        본인은 아래와 같은 개인정보 수집 및 이용에 동의합니다.<br><br>
+        <strong>수집 항목</strong>: 이름, 연락처, 주소(동 단위), 생년월일<br>
+        <strong>수집 목적</strong>: 고객 상담, 서비스 안내 및 관련 업무 처리<br>
+        <strong>보유 및 이용 기간</strong>: 수집 목적 달성 후 즉시 파기<br><br>
+        ※ 귀하는 개인정보 제공에 대한 동의를 거부할 권리가 있으나, 동의하지 않을 경우 서비스 이용이 제한될 수 있습니다.
+      </p>
     </div>
-  </div>
 
-</body>
-</html>
+    <button type="submit">제출하기</button>
+  </form>
+</div>
+
+<div class="container success" id="successBox">
+  <h2>접수 완료되었습니다 ✅</h2>
+  <p>담당자가 확인 후 빠르게 연락드리겠습니다.</p>
+</div>
+
+<script>
+  const scriptURL = "https://script.google.com/macros/s/AKfycbzz9xPm6JhWX3BmDvLyseops1R7x5lrFyM6fiDebj2rum0qI3FKjzJOErXgoDw19aWQ/exec";
+  const form = document.getElementById("contactForm");
+  const formBox = document
