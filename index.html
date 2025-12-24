@@ -122,28 +122,34 @@
     </div>
   </div>
 
-<script>
-  const form = document.getElementById("customerForm");
-  const complete = document.getElementById("completeMessage");
+  <script>
+    const form = document.getElementById("customerForm");
+    const complete = document.getElementById("completeMessage");
 
-  form.addEventListener("submit", function(e) {
-    e.preventDefault();
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
 
-    const formData = new FormData(form);
+      const formData = new FormData(form);
 
-    fetch("https://script.google.com/macros/s/AKfycbx_Kn2uayucGlelpi4fLCrXk1xluV2SgPDxYXQa5cve7m1eLcCQQ7ZGymbREP1jtE4/exec", {
-      method: "POST",
-      body: formData
-    })
-    .then(() => {
-      form.style.display = "none";      // 폼만 숨김
-      complete.style.display = "block"; // 완료 문구 표시
-    })
-    .catch(() => {
-      alert("전송 중 오류가 발생했습니다. 다시 시도해주세요.");
+      fetch("https://script.google.com/macros/s/AKfycbyGI8wU4vkfT9igdClVhgk3UnOrTYZKOQ0QSLxK8zbUH_5BsUkwPApVVsH_YRXD5XeP/exec", {
+        method: "POST",
+        body: formData
+      })
+      .then(res => res.text())
+      .then(result => {
+        if (result === "success") {
+          form.style.display = "none";
+          complete.style.display = "block";
+        } else if (result === "duplicate") {
+          alert("이미 접수된 휴대폰 번호입니다.");
+        } else {
+          alert("전송에 실패했습니다. 다시 시도해주세요.");
+        }
+      })
+      .catch(() => {
+        alert("전송 중 오류가 발생했습니다. 다시 시도해주세요.");
+      });
     });
-  });
-</script>
-
+  </script>
 </body>
 </html>
